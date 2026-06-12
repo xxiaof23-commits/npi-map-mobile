@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NPI MAP 产品查询</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="search-panel" aria-label="产品查询">
+      <div class="title-row">
+        <div>
+          <h1>NPI MAP</h1>
+          <p>手机网页版产品查询</p>
+        </div>
+        <span id="familyCount" class="count">0</span>
+      </div>
+
+      <div class="search-row">
+        <input id="searchInput" type="search" placeholder="TR / OE / 销售号 / 十位号" autocomplete="off">
+        <button id="clearButton" type="button">清空</button>
+      </div>
+
+      <div class="sample-row">
+        <button type="button" data-query="PWA9511">PWA9511</button>
+        <button type="button" data-query="WA9511">WA9511</button>
+        <button type="button" data-query="TR-A049618">TR-A049618</button>
+      </div>
+    </section>
+
+    <section id="unlockPanel" class="unlock-panel" aria-label="数据解锁">
+      <strong>输入访问密码</strong>
+      <span>产品数据已加密，解锁后只在当前浏览器中使用。</span>
+      <div class="password-row">
+        <input id="passwordInput" type="password" placeholder="访问密码" autocomplete="current-password">
+        <button id="unlockButton" type="button">解锁</button>
+      </div>
+      <p id="unlockMessage" class="unlock-message"></p>
+    </section>
+
+    <div id="resultList" class="result-list" aria-live="polite"></div>
+
+    <section id="emptyState" class="empty-state">
+      <strong>输入任意产品号开始查询</strong>
+      <span>支持 TR、OE、品牌销售号、十位号关键词。</span>
+    </section>
+
+    <article id="detailView" class="detail-view hidden">
+      <header class="summary-head">
+        <div>
+          <span class="eyebrow">产品族</span>
+          <h2 id="detailTitle"></h2>
+        </div>
+        <span id="matchBadge" class="badge">已匹配</span>
+      </header>
+
+      <dl class="summary-grid">
+        <div>
+          <dt>TR号</dt>
+          <dd id="summaryTr"></dd>
+        </div>
+        <div>
+          <dt>OE号</dt>
+          <dd id="summaryOe"></dd>
+        </div>
+        <div>
+          <dt>产品类型</dt>
+          <dd id="summaryType"></dd>
+        </div>
+        <div>
+          <dt>代表车型</dt>
+          <dd id="summaryVehicle"></dd>
+        </div>
+      </dl>
+
+      <div id="brandGroups" class="brand-groups"></div>
+    </article>
+  </main>
+
+  <script src="encrypted-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
